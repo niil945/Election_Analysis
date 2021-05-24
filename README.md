@@ -46,28 +46,28 @@ While this script was written specifically for assessing a singular multi-county
 
 If utilized for different localities the code could be refactored to change the labels of the output by referencing the header row. In the code we skip the header row using the following code:
 
-'''
+```
 with open(file_to_load) as election_data:
     reader = csv.reader(election_data)
     # Read the header
 header = next(reader)
-'''
+```
 Instead we could put those values in a list and call the necessary value when needed later by indexing the column. Doing so would require something as simple as running a for row loop and breaking after the first iteration while storing the values in a list.
 
-'''
+```
 column_name_list = []
 for row in reader:
   column_name_list.append(row)
   break
-'''
+```
 
 Then instead of referencing county, presuming the file format is the same or adjusting if it's not, we could simply reference column_name_list[1]. For parsing the actual data we'd still skip the header row as normal.
 
 Additionally, the code could easily be refactored to account for multiple votes cast by duplicating the tabulation method and referencing the corresponding column in the CSV file if column headers were used to track specific races similar to how we differentiate between candidates and counties by referencing the column index.
 
-'''
+```
         # Get the candidate name from each row.
         candidate_name = row[2]
-'''
+```
 
 If instead a column was utilized to denote the specific race we could utilize conditionals to check and tabulate each race by creating a separate list and dictionary for each office up for election. Ultimately it depends on the nature of the layout of the data file utilized to track the results but such changes would be minor to account for any variance. As designed the number of counties (or corresponding locality) and candidates are not hard coded and as such it would be easy to transition to elections with a differing number of sources of ballots and candidates or even candidate offices for each election.
