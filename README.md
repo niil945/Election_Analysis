@@ -18,7 +18,7 @@ A Colorado Board of Elections employee has given you the following tasks to comp
 - Software: Python 3.7, Visual Studio Code 1.56.2
 
 ## Results
-The analsys of the election show that:
+The analysis of the election show that:
 - There were 369,711 votes cast in the election.
 - The counties that received ballots were:
   - Jefferson
@@ -61,7 +61,7 @@ for row in reader:
   break
 ```
 
-Then instead of referencing county, presuming the file format is the same or adjusting if it's not, we could simply reference column_name_list[1]. For parsing the actual data we'd still skip the header row as normal.
+Then instead of referencing county, presuming the file format is the same or adjusting if it's not, we could simply reference column_name_list[1] utilizing a variable to replace all instances where county is referenced while summarizing/printing. For parsing the actual data the header row would be skipped as normal.
 
 Additionally, the code could easily be refactored to account for multiple votes cast by duplicating the tabulation method and referencing the corresponding column in the CSV file if column headers were used to track specific races similar to how we differentiate between candidates and counties by referencing the column index.
 
